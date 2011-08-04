@@ -1,0 +1,4 @@
+filemanager=com.mashape.filemanager.s3.S3FileManager
+s3.secretkey=INSERT SECRET KEY HERE
+s3.accesskey=INSERT ACCESS KEY HERE
+s3.bucket=ISNERT BUCKET NAME HERE
