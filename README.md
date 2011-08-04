@@ -15,9 +15,11 @@ S3FileManager
 The second implementation (the one we use in production) is an abstract way to store and manage file in the Amazon Simple Storage Service ( http://aws.amazon.com/s3 )
 It relies on JetS3t ( http://www.jets3t.org/ )
 The configuration file needs these keys:
+
 * `s3.accesskey` 
 * `s3.secretkey`
 * `s3.bucket` 
+
 Where the last one is the bucket name on S3
 
 
