@@ -69,7 +69,7 @@ public class S3FileManagerTest {
 	
 	@Test
 	public void testFileManagerFlow() throws Exception {
-		fileManager.saveFile("test/testFile.txt", new File("src/test/resources/testFile.txt"));
+		fileManager.saveFile("test/testFile.txt", new File("src/test/resources/testFile.txt"), "plain/text");
 		fileManager.moveFile("test/testFile.txt", "test/testFile2.txt");
 		fileManager.delete("test/testFile2.txt");
 	}

@@ -20,7 +20,7 @@ public interface FileManager {
 	 * 
 	 * @param fileName
 	 *            the file to be loaded
-	 * @return the inputStrem of the file, if readable.
+	 * @return the inputStream of the file, if readable.
 	 * @throws FileLoadingException
 	 *             if errors are found during the processing of the request
 	 */
@@ -30,10 +30,14 @@ public interface FileManager {
 	 * Request to save a File with the specified name.
 	 * 
 	 * @param fileName
-	 * @param input
+	 * @param file
+	 *            the file to be saved
+	 * @param contentType
+	 *            the content type of <code>file</code>, if applicable
 	 * @throws FileSavingException
+	 *             if the FileManager instance is unable to save this file
 	 */
-	void saveFile(String fileName, File file)
+	void saveFile(String fileName, File file, String contentType)
 			throws FileSavingException;
 
 	void moveFile(String source, String dest);

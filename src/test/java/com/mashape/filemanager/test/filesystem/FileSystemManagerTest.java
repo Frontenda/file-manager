@@ -36,7 +36,7 @@ public class FileSystemManagerTest {
 	@Test
 	public void testSaveFile() throws FileLoadingException, FileSavingException {
 		File source = new File("pom.xml");
-		manager.saveFile("tempFile", source);
+		manager.saveFile("tempFile", source, "");
 		File f = new File("./tempFile");
 		assertTrue(f.exists());
 		assertTrue(f.delete());
@@ -44,12 +44,12 @@ public class FileSystemManagerTest {
 
 	@Test(expected = FileSavingException.class)
 	public void testSaveFileException() throws FileSavingException {
-		manager.saveFile("", null);
+		manager.saveFile("", null, "");
 	}
 
 	@Test(expected = FileSavingException.class)
 	public void testSaveFileException1() throws FileSavingException {
-		manager.saveFile("pippo", null);
+		manager.saveFile("pippo", null, "");
 	}
 
 }

@@ -55,7 +55,7 @@ public class S3FileManager extends BaseFileManager {
 	}
 
 	@Override
-	public void saveFile(String fileName, File file) throws FileSavingException {
+	public void saveFile(String fileName, File file, String contentType) throws FileSavingException {
 
 		S3Object object;
 		try {
@@ -65,7 +65,7 @@ public class S3FileManager extends BaseFileManager {
 		}
 
 		object.setKey(getFsName(fileName));
-		object.setContentType("image/png");
+		object.setContentType(contentType);
 		AccessControlList accessControlList = new AccessControlList();
 		accessControlList.setOwner(bucket.getOwner());
 		accessControlList.grantPermission(GroupGrantee.ALL_USERS,

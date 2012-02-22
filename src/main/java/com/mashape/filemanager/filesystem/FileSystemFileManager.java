@@ -64,7 +64,7 @@ public class FileSystemFileManager extends BaseFileManager {
 	}
 
 	@Override
-	public void saveFile(String fileName, File source)
+	public void saveFile(String fileName, File source, String contentType)
 			throws FileSavingException {
 		InputStream dataStream;
 		try {
