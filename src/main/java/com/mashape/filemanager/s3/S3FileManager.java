@@ -18,10 +18,13 @@ import org.jets3t.service.model.S3Object;
 import org.jets3t.service.security.AWSCredentials;
 
 import com.mashape.filemanager.BaseFileManager;
+import com.mashape.filemanager.FileManagerFactory;
 import com.mashape.filemanager.exceptions.FileLoadingException;
 import com.mashape.filemanager.exceptions.FileSavingException;
 
 public class S3FileManager extends BaseFileManager {
+
+	private static final String AWS_PROPERTIES = "/aws.properties";
 
 	private AWSCredentials awsCredentials;
 	private S3Service s3Service;
@@ -32,6 +35,23 @@ public class S3FileManager extends BaseFileManager {
 		super(properties);
 		String awsAccessKey = properties.getProperty("s3.accesskey");
 		String awsSecretKey = properties.getProperty("s3.secretkey");
+		
+		// fallback
+		if(awsAccessKey == null) {
+			Properties awsProperties = new Properties();
+			try {
+				InputStream inputStream = FileManagerFactory.class
+						.getResourceAsStream(AWS_PROPERTIES);
+				if (inputStream != null) {
+					awsProperties.load(inputStream);
+					awsAccessKey = properties.getProperty("aws.accesskey");
+					awsSecretKey = properties.getProperty("aws.secretkey");
+				}
+			} catch (Exception e) {
+				LOG.error("Error loading AWS configuration", e);
+			}
+		}
+			
 		awsCredentials = new AWSCredentials(awsAccessKey, awsSecretKey);
 		try {
 			s3Service = new RestS3Service(awsCredentials);
