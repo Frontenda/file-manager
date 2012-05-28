@@ -44,8 +44,8 @@ public class S3FileManager extends BaseFileManager {
 						.getResourceAsStream(AWS_PROPERTIES);
 				if (inputStream != null) {
 					awsProperties.load(inputStream);
-					awsAccessKey = properties.getProperty("aws.accesskey");
-					awsSecretKey = properties.getProperty("aws.secretkey");
+					awsAccessKey = awsProperties.getProperty("aws.accesskey");
+					awsSecretKey = awsProperties.getProperty("aws.secretkey");
 				}
 			} catch (Exception e) {
 				LOG.error("Error loading AWS configuration", e);
